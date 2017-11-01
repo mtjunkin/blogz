@@ -45,12 +45,12 @@ def login():
 
         if user and user.password == password:
             session['username'] = username
-            flash('You logged in Successfully ' + username, 'success')
+            flash('You logged in successfully, ' + username, 'success')
             print(session)
             return redirect('/newpost')
 
         else:
-            flash('User password does not match, or user does not exist', 'error')
+            flash('User password does not match or user does not exist', 'error')
 
     return render_template('login.html')
 
