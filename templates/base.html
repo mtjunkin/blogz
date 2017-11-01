@@ -3,14 +3,35 @@
     <head>
         <style>
             .error {
-            color: red;
+                color: red;
+            }
+            .success {
+                color: rgb(68, 0, 255)
+            }
+            .right {
+                float: right
+            }
+            .left {
+                float: left
             }
         </style>
+
         <title>{{title}}</title>
     </head>
+
     <body>
-        <a href="/blog">Main Blog Page</a>
-        <a href="/newpost">Add a Blog Entry</a>
+        <div class = 'left'>| <a href="/">Home</a> | <a href="/blog">Main Blog Page</a> | <a href='/newpost'>Add a Blog Entry</a> | </div>
+        <div class = 'right'>| <a href='/login'>Log in</a> | <a href='/logout'>Log out</a> | </div>>
+        <br>
+
+        {% with messages = get_flashed_messages(with_categories=True) %}
+        {% for category, message in messages %}
+
+        <p class = "{{category}}">{{message}}</p>
+
+        {% endfor %}
+        {% endwith %}
+
         {% block content %}
         {% endblock %}
     </body>
